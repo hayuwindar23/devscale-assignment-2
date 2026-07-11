@@ -1,0 +1,37 @@
+{
+  "name": "school-ai-recommender",
+  "version": "1.0.0",
+  "description": "Assignment 2 AI Product with TypeScript Batch I - Rekomendasi SMA/SMK DI Yogyakarta",
+  "main": "dist/index.js",
+  "type": "module",
+  "scripts": {
+    "dev:api": "tsx watch src/index.ts",
+    "dev:worker": "tsx watch src/workers/recommendationWorker.ts",
+    "build": "tsc",
+    "start:api": "node dist/index.js",
+    "start:worker": "node dist/workers/recommendationWorker.js",
+    "prisma:generate": "prisma generate",
+    "prisma:migrate": "prisma migrate dev",
+    "prisma:studio": "prisma studio",
+    "db:seed": "tsx prisma/seed.ts"
+  },
+  "dependencies": {
+    "@hono/node-server": "latest",
+    "@prisma/client": "^6.19.3",
+    "bullmq": "latest",
+    "dotenv": "latest",
+    "hono": "latest",
+    "ioredis": "latest",
+    "openai": "latest",
+    "zod": "latest"
+  },
+  "devDependencies": {
+    "@types/node": "latest",
+    "prisma": "^6.19.3",
+    "tsx": "latest",
+    "typescript": "latest"
+  },
+  "prisma": {
+    "seed": "tsx prisma/seed.ts"
+  }
+}

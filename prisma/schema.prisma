@@ -1,0 +1,35 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum RecommendationStatus {
+  PENDING
+  PROCESSING
+  COMPLETED
+  FAILED
+}
+
+model SchoolRecommendationJob {
+  id                    String               @id @default(cuid())
+  studentName           String
+  score                 Float
+  preferredMajor        String
+  preferredLocation     String?
+  schoolType            String?
+  notes                 String?
+  status                RecommendationStatus @default(PENDING)
+  input                 Json
+  candidateSchools      Json?
+  promptResult          Json?
+  recommendation        String?
+  evaluation            Json?
+  outputFilePath        String?
+  errorMessage          String?
+  createdAt             DateTime             @default(now())
+  updatedAt             DateTime             @updatedAt
+}
